@@ -120,12 +120,16 @@ extern "C" {
 }
 
 /// A half-precision floating point number.
+#[allow(non_camel_case_types)]
+#[derive(Clone, Copy, Default)]
 #[repr(transparent)]
 pub struct f16(u16);
 
 impl f16 {}
 
 /// A half-precision floating point number, called brain float.
+#[allow(non_camel_case_types)]
+#[derive(Clone, Copy, Default)]
 #[repr(transparent)]
 pub struct bf16(u16);
 

@@ -47,3 +47,6 @@ rpath = false     # On some systems, setting this to false can help with optimiz
 criterion = { version = "0.5.1" }
 rand = { version = "0.8.5" }
 half = { version = "2.4.0" }
+
+[dependencies]
+half = { version = "2.4.0", features = ["serde"] }

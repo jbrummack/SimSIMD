@@ -986,6 +986,64 @@ mod tests {
     }
 
     #[test]
+    fn test_l2sq_f16() {
+        let a: &[f16; 3] = &[f16::from_f32(1.0), f16::from_f32(2.0), f16::from_f32(3.0)];
+        let b: &[f16; 3] = &[f16::from_f32(4.0), f16::from_f32(5.0), f16::from_f32(6.0)];
+
+        if let Some(result) = SpatialSimilarity::sqeuclidean(a, b) {
+            println!("The result of l2sq_f16 is {:.8}", result);
+            assert_almost_equal(27.0, result, 0.01);
+        }
+    }
+
+    #[test]
+    fn test_l2_f16_rs_half() {
+        let a: &[f16; 3] = &[f16::from_f32(1.0), f16::from_f32(2.0), f16::from_f32(3.0)];
+        let b: &[f16; 3] = &[f16::from_f32(4.0), f16::from_f32(5.0), f16::from_f32(6.0)];
+        if let Some(result) = SpatialSimilarity::euclidean(a, b) {
+            println!("The result of l2_f16 is {:.8}", result);
+            assert_almost_equal(5.2, result, 0.01);
+        }
+    }
+
+    #[test]
+    fn test_l2sq_bf16() {
+        let a: &[bf16; 3] = &[
+            bf16::from_f32(1.0),
+            bf16::from_f32(2.0),
+            bf16::from_f32(3.0),
+        ];
+        let b: &[bf16; 3] = &[
+            bf16::from_f32(4.0),
+            bf16::from_f32(5.0),
+            bf16::from_f32(6.0),
+        ];
+
+        if let Some(result) = SpatialSimilarity::sqeuclidean(a, b) {
+            println!("The result of l2sq_bf16 is {:.8}", result);
+            assert_almost_equal(27.0, result, 0.01);
+        }
+    }
+
+    #[test]
+    fn test_l2_bf16() {
+        let a: &[bf16; 3] = &[
+            bf16::from_f32(1.0),
+            bf16::from_f32(2.0),
+            bf16::from_f32(3.0),
+        ];
+        let b: &[bf16; 3] = &[
+            bf16::from_f32(4.0),
+            bf16::from_f32(5.0),
+            bf16::from_f32(6.0),
+        ];
+        if let Some(result) = SpatialSimilarity::euclidean(a, b) {
+            println!("The result of l2_bf16 is {:.8}", result);
+            assert_almost_equal(5.2, result, 0.01);
+        }
+    }
+
+    #[test]
     fn test_l2_f64() {
         let a: &[f64; 3] = &[1.0, 2.0, 3.0];
         let b: &[f64; 3] = &[4.0, 5.0, 6.0];
